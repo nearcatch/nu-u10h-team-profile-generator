@@ -1,0 +1,33 @@
+{
+  "name": "nu-u10h-team-profile-generator",
+  "version": "1.0.0",
+  "description": "a team profile generator",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest --verbose ./__tests__"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nearcatch/nu-u10h-team-profile-generator.git"
+  },
+  "keywords": [
+    "jest",
+    "inquirer",
+    "node"
+  ],
+  "author": "nearcatch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nearcatch/nu-u10h-team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/nearcatch/nu-u10h-team-profile-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.3"
+  },
+  "devDependencies": {
+    "jest": "^28.0.1"
+  }
+}
