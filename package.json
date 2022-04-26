@@ -7,7 +7,9 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "jest --verbose ./__tests__"
+    "test": "jest --verbose ./__tests__",
+    "start": "node index.js",
+    "reset": "node reset.js"
   },
   "repository": {
     "type": "git",
