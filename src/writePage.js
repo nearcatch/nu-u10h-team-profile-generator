@@ -1,14 +1,13 @@
 const fs = require("fs");
-// const Manager = require("../lib/Manager");
-// const Engineer = require("../lib/Engineer");
-// const Intern = require("../lib/Intern");
 
-// let employees = [
-//   new Manager("Bleh", 3, "manager@gmai.com", "55555-33"),
-//   new Engineer("ENGBLEH", 21, "eng@gmai.com", "englbeh"),
-//   new Intern("INTBLEH", 13, "int@gmai.com", "Hard Knocks"),
-// ];
-function writePage(cards) {
+function writePage(employees) {
+  let cards = [];
+  let rawCards = [];
+  for (employee of employees) {
+    let role = employee.getRole();
+    rawCards.push(writeCard(employee, role));
+    cards = rawCards.join("");
+  }
   let page = `<!DOCTYPE html>
   <html lang="en">
     <head>
@@ -44,7 +43,11 @@ function writePage(cards) {
       </main>
     </body>
   </html>`;
-  fs.writeFile("./dist/team.html", page, (err) => console.error(err));
+  fs.writeFile("./dist/team.html", page, (err) =>
+    err
+      ? console.error(err)
+      : console.log("Writing your team page to ./dist/team.html")
+  );
 }
 
 function writeCard(employee, role) {
@@ -71,14 +74,7 @@ function writeCard(employee, role) {
 }
 
 function writeHtml() {
-  let cards = [];
-  let rawCards = [];
-  for (employee of employees) {
-    let role = employee.getRole();
-    rawCards.push(writeCard(employee, role));
-    cards = rawCards.join("");
-  }
   writePage(cards);
 }
 
-module.exports = writeHtml;
+module.exports = writePage;

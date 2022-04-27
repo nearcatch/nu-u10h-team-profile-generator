@@ -1,17 +1,11 @@
-// const fs = require("fs");
 const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const writeHtml = require("./src/writeHtml");
+const writePage = require("./src/writePage");
 
 let employees = [];
-// buildTeam().then((answers) => {
-//   fs.writeFile("./generated.md", `${buildReadme(answers)}`, (err) =>
-//     err ? console.error(err) : console.log("Success!")
-//   );
-// });
-console.log(new Manager("bleh", 3, "email", 5555));
+
 buildTeam();
 
 function buildTeam() {
@@ -46,14 +40,11 @@ function buildTeam() {
     ])
     .then(({ name, id, email, office, add }) => {
       let newEmployee = new Manager(name, id, email, office);
-      console.log(newEmployee);
       employees.push(newEmployee);
-      console.log(employees);
       if (add) {
         addMember();
       } else {
-        console.log(employees);
-        writeHtml(employees);
+        writePage(employees);
       }
     });
 }
@@ -110,8 +101,7 @@ function addMember() {
       if (add) {
         addMember();
       } else {
-        console.log(employees);
-        writeHtml(employees);
+        writePage(employees);
       }
     });
 }
