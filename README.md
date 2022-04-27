@@ -28,7 +28,7 @@
 <h3 align="center">Team Profile Generator</h3>
 
   <p align="center">
-    a command-line readme generator using node.js
+    a command-line team html generator using node.js
     <br />
     <a href="https://github.com/nearcatch/nu-u10h-team-profile-generator"><strong>Explore the docs »</strong></a>
     <br />
