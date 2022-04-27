@@ -10,7 +10,9 @@ let employees = [];
 //     err ? console.error(err) : console.log("Success!")
 //   );
 // });
+console.log(new Manager("bleh", 3, "email", 5555));
 buildTeam();
+
 function buildTeam() {
   inquirer
     .prompt([
@@ -42,12 +44,15 @@ function buildTeam() {
       },
     ])
     .then(({ name, id, email, office, add }) => {
-      employees.push(new Manager(name, id, email, office));
+      let newEmployee = new Manager(name, id, email, office);
+      console.log(newEmployee);
+      employees.push(newEmployee);
+      console.log(employees);
       if (add) {
         addMember();
       } else {
         console.log(employees);
-        console.log("Your team page is in ./dist")
+        console.log("Your team page is in ./dist");
       }
     });
 }
@@ -105,7 +110,7 @@ function addMember() {
         addMember();
       } else {
         console.log(employees);
-        console.log("Your team page is in ./dist")
+        console.log("Your team page is in ./dist");
       }
     });
 }
