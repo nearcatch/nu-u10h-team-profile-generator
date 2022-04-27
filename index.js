@@ -6,8 +6,10 @@ const writePage = require("./src/writePage");
 
 let employees = [];
 
+// call prompt on index.js load
 buildTeam();
 
+// start building team
 function buildTeam() {
   inquirer
     .prompt([
@@ -41,6 +43,7 @@ function buildTeam() {
     .then(({ name, id, email, office, add }) => {
       let newEmployee = new Manager(name, id, email, office);
       employees.push(newEmployee);
+      // if true to "add", then call addMember, otherwise call writePage
       if (add) {
         addMember();
       } else {
@@ -49,6 +52,7 @@ function buildTeam() {
     });
 }
 
+// add an engineer or intern
 function addMember() {
   inquirer
     .prompt([
@@ -95,9 +99,10 @@ function addMember() {
     .then(({ role, name, id, email, github, school, add }) => {
       if (role === "Engineer") {
         employees.push(new Engineer(name, id, email, github));
-      } else {
+      } else if (role === "Intern") {
         employees.push(new Intern(name, id, email, school));
       }
+      // if true to "add", then call addMember, otherwise call writePage
       if (add) {
         addMember();
       } else {

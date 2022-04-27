@@ -1,13 +1,17 @@
 const fs = require("fs");
 
+// function for writing page, taking in employees array from index.js
 function writePage(employees) {
   let cards = [];
   let rawCards = [];
+  // iterate over employees and write a card for each by calling writeCard
   for (employee of employees) {
     let role = employee.getRole();
     rawCards.push(writeCard(employee, role));
-    cards = rawCards.join("");
   }
+  // flatten the rawCards array into a string
+  cards = rawCards.join("");
+  // page template with string interpolated variables
   let page = `<!DOCTYPE html>
   <html lang="en">
     <head>
@@ -43,6 +47,8 @@ function writePage(employees) {
       </main>
     </body>
   </html>`;
+  
+  // write the page and log a message
   fs.writeFile("./dist/team.html", page, (err) =>
     err
       ? console.error(err)
@@ -50,6 +56,7 @@ function writePage(employees) {
   );
 }
 
+// card writing function
 function writeCard(employee, role) {
   const { name, id, email, office, github, school } = employee;
   let unique = "";
@@ -71,10 +78,6 @@ function writeCard(employee, role) {
     <li class="list-group-item">${unique}</li>
   </ul>
 </div>`;
-}
-
-function writeHtml() {
-  writePage(cards);
 }
 
 module.exports = writePage;
