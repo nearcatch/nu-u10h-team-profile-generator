@@ -1,8 +1,9 @@
-const fs = require("fs");
+// const fs = require("fs");
 const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const writeHtml = require("./src/writeHtml");
 
 let employees = [];
 // buildTeam().then((answers) => {
@@ -52,7 +53,7 @@ function buildTeam() {
         addMember();
       } else {
         console.log(employees);
-        console.log("Your team page is in ./dist");
+        writeHtml(employees);
       }
     });
 }
@@ -110,7 +111,7 @@ function addMember() {
         addMember();
       } else {
         console.log(employees);
-        console.log("Your team page is in ./dist");
+        writeHtml(employees);
       }
     });
 }

@@ -1,18 +1,13 @@
-let employees = [
-  {
-    name: "MANAGER",
-    id: "3",
-    email: "memail",
-    office: "489024",
-  },
-  {
-    name: "ENGINEER",
-    id: "8",
-    email: "eemail",
-    github: "GITHUB",
-  },
-  { name: "INTERN", id: "4", email: "iemail", school: "SCHOOL" },
-];
+const fs = require("fs");
+// const Manager = require("../lib/Manager");
+// const Engineer = require("../lib/Engineer");
+// const Intern = require("../lib/Intern");
+
+// let employees = [
+//   new Manager("Bleh", 3, "manager@gmai.com", "55555-33"),
+//   new Engineer("ENGBLEH", 21, "eng@gmai.com", "englbeh"),
+//   new Intern("INTBLEH", 13, "int@gmai.com", "Hard Knocks"),
+// ];
 function writePage(cards) {
   let page = `<!DOCTYPE html>
   <html lang="en">
@@ -49,17 +44,18 @@ function writePage(cards) {
       </main>
     </body>
   </html>`;
-  fs.writeFile("./dist/page.html", page, (err) => console.error(err));
+  fs.writeFile("./dist/team.html", page, (err) => console.error(err));
 }
 
-function writeCard(employee) {
+function writeCard(employee, role) {
   const { name, id, email, office, github, school } = employee;
+  let unique = "";
   if (office) {
-    let unique = `Office Number: ${office}`;
+    unique = `Office Number: ${office}`;
   } else if (github) {
-    let unique = `Github: <a href="https://github.com/${github}">${github}</a>`;
+    unique = `Github: <a href="https://github.com/${github}">${github}</a>`;
   } else if (school) {
-    let unique = `School: ${school}`;
+    unique = `School: ${school}`;
   }
   return `<div id="card" class="card col-6 col-md-3 shadow-sm p-0 m-2 rounded">
   <div class="card-header bg-primary text-white">
@@ -73,7 +69,16 @@ function writeCard(employee) {
   </ul>
 </div>`;
 }
-let cards = "";
-for (employee of employees) {
-  cards += writeCard(employee);
+
+function writeHtml() {
+  let cards = [];
+  let rawCards = [];
+  for (employee of employees) {
+    let role = employee.getRole();
+    rawCards.push(writeCard(employee, role));
+    cards = rawCards.join("");
+  }
+  writePage(cards);
 }
+
+module.exports = writeHtml;
