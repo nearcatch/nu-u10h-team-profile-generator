@@ -102,7 +102,7 @@ https://user-images.githubusercontent.com/692914/165451363-5937a548-288b-493a-95
 
 ## Usage
 
-Run `node index.js` from the root of the code repository to begin building your team. Answer the prompts and an html page will be generated in the dist folder.
+Run `node index.js` from the root of the code repository to begin building your team. Answer the prompts and an html page will be generated in the dist folder. Run `npm run reset` from the root of the code repository to remove any generated pages from previous runs.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
